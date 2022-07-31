@@ -23,6 +23,7 @@ const showSchema = require("./models/showDetails");
 const ejsMate = require("ejs-mate");
 const data2 = require("./seeds/data2");
 const { v4: uuid } = require("uuid");
+
 // const  data  = require("./seeds/rapidapi");
 const request = require("request");
 const passport = require("passport");
@@ -35,6 +36,7 @@ const options = require("./seeds/ottdata");
 const theotorSchema = require("./models/theotor");
 const { theotorLoginRoute } = require("./routes/theotorLogin");
 const { loginRoutes } = require("./routes/loginroutes");
+const port= process.env.PORT || 3000;
 // const { authenticate } = require("passport");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -306,6 +308,6 @@ app.use((err, req, res, next) => {
   res.status(statusCode).render("error", { err });
   // res.send('dhadha')
 });
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log("Listening");
 });
