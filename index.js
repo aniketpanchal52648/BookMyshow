@@ -41,9 +41,44 @@ const port= process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-mongoDB();
+// mongoDB();
 // Set the default templating engine to ejs
+// const { MongoClient, ServerApiVersion } = require('mongodb');
+// const uri = "mongodb+srv://aniket:aniket@30@cluster0.9fnws.mongodb.net/?retryWrites=true&w=majority";
+// const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+// client.connect(err => {
+//   const collection = client.db("test").collection("devices");
+//   // perform actions on the collection object
+//   console.log('not connected');
+//   client.close();
+// });
+// const { MongoClient } = require("mongodb");
+ 
+// // Replace the following with your Atlas connection string                                                                                                                                        
+// const url = "mongodb+srv://aniket:aniket52648@cluster0.9fnws.mongodb.net/test?retryWrites=true&w=majority&useNewUrlParser=true&useUnifiedTopology=true";
+// const client = new MongoClient(url);
 
+// async function run() {
+//     try {
+//         await client.connect();
+//         console.log("Connected correctly to server");
+
+//     } catch (err) {
+//         console.log(err.stack);
+//     }
+//     finally {
+//         await client.close();
+//     }
+// }
+
+// run().catch(console.log('not connected'));
+const mongoose=require('mongoose');
+const DB='mongodb+srv://aniket:H4RPwKh5mfM3SDyR@cluster0.9fnws.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+mongoose.connect(DB).then( ()=>{
+  console.log('connected');
+}).catch((e)=> {
+  console.log('not connected');
+})
 const sessionConfig = {
   secret: "123456789",
   resave: false,
@@ -309,5 +344,5 @@ app.use((err, req, res, next) => {
   // res.send('dhadha')
 });
 app.listen(port, () => {
-  console.log("Listening");
+  console.log(`Listening ${port}`);
 });
